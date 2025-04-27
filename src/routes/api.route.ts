@@ -4,6 +4,9 @@ const routes = Router();
 import * as commonCntrl from '../controllers/common.controller';
 
 routes.get('/connect-db', commonCntrl.connectDB);
+routes.get('/', (request: Request , response: Response) => {
+    response.json({success: true, message: "Welcome to LoopList Server!"})
+})
 routes.get('/ping', (request: Request , response: Response) => {
     response.json({success: true, message: "pong!"})
 })

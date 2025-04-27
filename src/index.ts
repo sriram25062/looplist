@@ -15,7 +15,7 @@ app.use("/api", mountRoute);
 app.use("/api/user", mountUserRoute);
 
 app.use(bearerAuth);
-app.use("/api/loop", mountLoopRoute)
+app.use("/api/loop", mountLoopRoute);
 
 app.listen(port, async() => {
     console.log(`server running on port ${port}`);
