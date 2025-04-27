@@ -19,7 +19,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: '[name].js',
+        filename: 'index.js',
         libraryTarget: 'commonjs2'
     },
     externals: [nodeExt()],
