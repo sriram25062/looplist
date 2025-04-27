@@ -1,0 +1,14 @@
+import { NextFunction, Request, Response } from 'express';
+const { Router } = require('express');
+const routes = Router();
+import * as loopCntrl from '../controllers/loop.controller';
+
+const reuse = require("../utils/reusable");
+
+routes.post('/create', reuse.validateParameters(['loop_title', 'frequency', 'start_date', 'visibility']), loopCntrl.createLoop);
+routes.post('/me', loopCntrl.getUserLoops);
+routes.post('/check-in', loopCntrl.checkIn);
+routes.get('/public', loopCntrl.getPublicLoops);
+routes.get('/clone', loopCntrl.cloneLoop);
+
+export = routes;
