@@ -8,6 +8,7 @@ const mountRoute = require('./routes/api.route')
 const mountUserRoute = require('./routes/user.route')
 const mountLoopRoute = require('./routes/loop.route')
 const bearerAuth = require("./utils/bearer-auth");
+import serverless from 'serverless-http';
 
 app.use(express.json());
 app.use(cors({ origin: ['http://localhost:4200', 'https://looplist-ui.vercel.app'] }));
@@ -30,4 +31,4 @@ app.listen(port, async() => {
     }
 });
 
-module.exports = app;
+module.exports = serverless(app);
