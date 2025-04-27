@@ -10,7 +10,7 @@ const mountLoopRoute = require('./routes/loop.route')
 const bearerAuth = require("./utils/bearer-auth");
 
 app.use(express.json());
-app.use(cors({ origin: ['http://localhost:4200', 'https://looplist-ui.vercel.app:4200'] }));
+app.use(cors({ origin: ['http://localhost:4200', 'https://looplist-ui.vercel.app'] }));
 app.use("/api", mountRoute);
 app.use("/api/user", mountUserRoute);
 
