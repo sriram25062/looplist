@@ -11,7 +11,7 @@ export class Loop {
     }
 
     async getUserLoops(param:any) {
-        let query: string = "SELECT * FROM loops WHERE created_by = $1";
+        let query: string = "SELECT l.*, CASE WHEN lp.loop_progress_id IS NULL THEN FALSE ELSE TRUE END AS completed FROM loops l LEFT JOIN loop_progress lp ON lp.loop_id = l.loop_id AND lp.progress_date = CURRENT_DATE WHERE created_by = $1";
         let values: any[] = [param.user_id];
         return await db.query(query, values);
     }
@@ -33,4 +33,10 @@ export class Loop {
         let values: any[] = [param.loop_id, param.user_id];
         return await db.query(query, values);
     }
+
+    async getPersonalFeed(param: any) {
+        let query: string = "SELECT l.*, COALESCE(l.updated_at, l.created_at) last_updated_at, u.full_name AS created_by_name FROM loops l LEFT JOIN users u ON u.user_id = l.created_by WHERE l.created_by IN (SELECT invited_friend_id FROM friends WHERE invitee_friend_id = $1 AND visibility = 'friends') OR l.visibility = 'public' ORDER BY last_updated_at DESC;";
+        let values: any[] = [param.user_id];
+        return await db.query(query, values);
+    } 
 }

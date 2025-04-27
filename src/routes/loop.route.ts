@@ -6,9 +6,10 @@ import * as loopCntrl from '../controllers/loop.controller';
 const reuse = require("../utils/reusable");
 
 routes.post('/create', reuse.validateParameters(['loop_title', 'frequency', 'start_date', 'visibility']), loopCntrl.createLoop);
-routes.post('/me', loopCntrl.getUserLoops);
+routes.get('/me', loopCntrl.getUserLoops);
 routes.post('/check-in', loopCntrl.checkIn);
 routes.get('/public', loopCntrl.getPublicLoops);
-routes.get('/clone', loopCntrl.cloneLoop);
+routes.post('/clone', loopCntrl.cloneLoop);
+routes.get('/personal-feed', loopCntrl.getPersonalFeed);
 
 export = routes;

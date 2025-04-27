@@ -69,3 +69,16 @@ export const cloneLoop = async (request: Request, response: Response) => {
         response.status(500).json({ succes: false, created: false, message: "Failed to Clone Loop due to - " + new Error(error).message});
     }
 }
+
+export const getPersonalFeed = async (request: Request, response: Response) => {
+    try {
+        let result: any = await qryClass.getPersonalFeed(request.body);
+        if(result.rowCount > 0) {
+            response.status(200).json({ success: true, created: true, result: result.rows, message: "Personal Feed fetched Successfully" })
+        } else {
+            response.status(500).json({ success: false, created: false, message: "Failed to Fetch personal Feed" });
+        }
+    } catch (error:any) {
+        response.status(500).json({ succes: false, created: false, message: "Failed to Fetch personal feed due to - " + new Error(error).message});
+    }
+}
