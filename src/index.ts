@@ -30,3 +30,5 @@ app.listen(port, async() => {
         console.log("DB Connection Failure due to " + connect.message)
     }
 });
+
+module.exports = app;
