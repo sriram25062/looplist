@@ -15,11 +15,11 @@ app.use(cors({ origin: ['http://localhost:4200', 'https://looplist-ui.vercel.app
 
 app.get('/', (req: any, res: any) => res.send('Hello I`m LoopList Server'));
 
-// app.use("/api", mountRoute);
-// app.use("/api/user", mountUserRoute);
+app.use("/api", mountRoute);
+app.use("/api/user", mountUserRoute);
 
-// app.use(bearerAuth);
-// app.use("/api/loop", mountLoopRoute);
+app.use(bearerAuth);
+app.use("/api/loop", mountLoopRoute);
 
 // app.listen(port, async() => {
 //     console.log(`server running on port ${port}`);
