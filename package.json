@@ -2,7 +2,7 @@
   "name": "looplist-server",
   "version": "1.0.0",
   "description": "Social Streak Tracker for Micro-Habits (server)",
-  "main": "src/index.ts",
+  "main": "build/index.js",
   "scripts": {
     "wp": "webpack --config webpack.config.js --watch",
     "build": "webpack --config webpack.config.js --mode production",
