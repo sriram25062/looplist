@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "wp": "webpack --config webpack.config.js --watch",
+    "build": "webpack --config webpack.config.js --mode production",
     "start": "nodemon build/index.js"
   },
   "repository": {
