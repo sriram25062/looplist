@@ -21,14 +21,14 @@ app.use("/api/user", mountUserRoute);
 app.use(bearerAuth);
 app.use("/api/loop", mountLoopRoute);
 
-// app.listen(port, async() => {
-//     console.log(`server running on port ${port}`);
-//     let connect = await db.connectDB();
-//     if(connect.rowCount > 0) {
-//         console.log("DB Connected Successfully")
-//     } else {
-//         console.log("DB Connection Failure due to " + connect.message)
-//     }
-// });
+app.listen(port, async() => {
+    console.log(`server running on port ${port}`);
+    let connect = await db.connectDB();
+    if(connect.rowCount > 0) {
+        console.log("DB Connected Successfully")
+    } else {
+        console.log("DB Connection Failure due to " + connect.message)
+    }
+});
 
 module.exports = serverless(app);
